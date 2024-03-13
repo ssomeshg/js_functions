@@ -1,0 +1,125 @@
+<div id="form">
+    <table id="table_form">
+        <tbody>
+            <tr>
+                <th>Name</th>
+                <td><input type="text" name="" id="sName"></td>
+
+            </tr>
+            <tr>
+                <th>Age</th>
+                <td><input type="text" name="" id="sAge"></td>
+
+            </tr>
+            <tr>
+                <th>Gender</th>
+                <td><input type="radio" name="gender" value="male">Male
+                    <input type="radio" name="gender" value="female">Female
+
+                </td>
+
+            </tr>
+            <tr>
+                <th>Course</th>
+                <td>
+                    <select name="" id="courselist">
+                        <option value="1">Javascript</option>
+                        <option value="2">Javascript1</option>
+                        <option value="3">Javascript2</option>
+                    </select>
+                </td>
+
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td><input type="email" name="" id="sEmail"></td>
+
+            </tr>
+            <tr>
+                <td colspan="1"><Button id="save">Save</Button></td>
+            </tr>
+        </tbody>
+
+
+    </table>
+</div>
+
+<div>
+    <table id="tableDetails">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Gender</th>
+                <th>Course</th>
+                <th>Email</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody id="tdetails">
+
+        </tbody>
+
+
+
+    </table>
+</div>
+
+<script>
+
+    var sName = document.getElementById("sName");
+    var sAge = document.getElementById("sAge")
+    var gender = document.getElementsByName("gender")
+    var courselist = document.getElementById("courselist")
+    var sEmail = document.getElementById("sEmail")
+    var btnsave = document.getElementById("save")
+    var tableDetails = document.getElementById("tableDetails")
+    var tbody = document.querySelector("#tdetails")
+
+    btnsave.addEventListener("click", function () {
+    var trow = document.createElement("tr");
+    trow.setAttribute("id", "student_details");
+    tbody.append(trow);
+
+    var nameCell = document.createElement("td");
+    nameCell.textContent = sName.value;
+    trow.append(nameCell);
+
+    var ageCell = document.createElement("td");
+    ageCell.textContent = sAge.value;
+    trow.append(ageCell);
+
+    var genderCell = document.createElement("td");
+    genderCell.textContent = getSelectedGender();
+    trow.append(genderCell);
+
+    var courseCell = document.createElement("td");
+    courseCell.textContent = courselist.value;
+    trow.append(courseCell);
+
+    var emailCell = document.createElement("td");
+    emailCell.textContent = sEmail.value;
+    trow.append(emailCell);
+   
+
+    var deletecell = document.createElement("td");
+    deletecell.innerHTML = "<button onclick= deleteRow(event)>Delete</button>";
+    trow.append(deletecell);
+});
+
+function getSelectedGender() {
+    var genderValue;
+    gender.forEach(function (radio) {
+        if (radio.checked) {
+            genderValue = radio.value;
+        }
+    });
+    return genderValue;
+}
+
+function deleteRow(event){
+    event.target.parentElement.parentElement.remove()
+}
+
+
+</script>

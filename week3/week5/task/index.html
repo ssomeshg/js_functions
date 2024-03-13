@@ -1,0 +1,57 @@
+<h1 id="result"></h1>
+
+<input type="text" id="captcha_in">
+<button>Verify</button>
+
+
+<script>
+    let result1 = document.getElementById("result")
+    let in_data = document.getElementById("captcha_in")
+    let btn = document.querySelector('button')
+    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+
+    function generateString(length) {
+        let generate_captcha = ' ';
+        const charactersLength = characters.length;
+        for (let i = 0; i < length; i++) {
+            generate_captcha += characters.charAt(Math.floor(Math.random() * charactersLength));
+        }
+
+        result1.textContent = generate_captcha;
+
+        
+
+    }
+    btn.addEventListener("click", function () {
+            var ind = in_data.value
+            var captacha = new Promise((resolve, reject) => {
+
+                if (generate_captcha = ind) {
+                     console.log(in_data)
+                    resolve("CAPTCHA verified Sucessfully");
+                }
+                else {
+                    reject("CAPTCHA Verified Failed Please try again")
+                }
+            }
+
+            )
+            captacha.then(
+                (smsg) => {
+                    alert(smsg)
+                }
+            ).catch(
+                (emsg) => {
+                    alert(emsg)
+                }
+            )
+
+        })
+    generateString(5)
+
+
+
+
+
+
+</script>

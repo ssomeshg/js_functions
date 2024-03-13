@@ -1,0 +1,176 @@
+<!-- radio -->
+
+
+<div>
+    <input type="radio" name="gender" value="male">male
+    <input type="radio" name="gender" value="female">frmale
+    <h1 id="result"></h1>
+</div>
+
+<script>
+    var radio = document.getElementsByName("gender")
+    var res = document.getElementById("result")
+
+
+    // radio[0].addEventListener("click",function(){
+    //     res.textContent=radio[0].value //event.target.value
+    // })
+    // radio[1].addEventListener("click",function(){
+    //     res.textContent=radio[1].value
+    // })
+
+
+    for (count = 0; count < radio.length; count = count + 1) {
+        radio[count].addEventListener("click", function () {
+            res.textContent = event.target.value
+        })
+    }
+
+</script>
+
+<!-- chech box -->
+
+<h1>Checkbox</h1>
+<input type="checkbox" name="check" value="C++">C++
+<input type="checkbox" name="check" value="Java">Java
+<input type="checkbox" name="check" value="Phython">Phython
+
+<h1 id="res1"></h1>
+
+<script>
+    var check = document.getElementsByName("check")
+    var result1 = document.getElementById("res1")
+
+    skill = []
+
+    for (count = 0; count < check.length; count = count + 1) {
+        check[count].addEventListener("click", function () {
+            if (event.target.checked) {
+
+                skill.push(event.target.value)
+                result1.textContent = skill
+            }
+            else {
+                console.log("inchecked")
+
+                // find index:skill 
+                var index = skill.indexOf(event.target.value)
+                skill.splice(index, 1)
+                result1.textContent = skill
+            }
+        })
+    }
+
+</script>
+
+
+<h1>Form Validation</h1>
+<style>
+    .name_error,.email_error,.phone_error{
+        color: red;
+        display: none;
+    }
+</style>
+<div>
+    <form action="">
+        <input type="text" name="" id="name" placeholder="name">
+        <span class="name_error">name only character</span>
+        <br>
+        <input type="text" name="" id="email" placeholder="Email">
+        <span class="email_error">enter valid Email</span>
+        <br>
+        <input type="text" name="" id="phone" placeholder="phone">
+        <span class="phone_error">number must be 10 digit</span>
+        <br>
+        <input type="submit" id="submit">
+    </form>
+</div>
+
+
+<script>
+
+
+
+    var submit = document.getElementById("submit")
+    submit.addEventListener("click",function(){
+        event.preventDefault()
+
+        var nameRegix = /^[a-zA-z]+$/
+        var emailRegix = /^[a-z]+@gmail\.com/
+        var phoneRegix = /^\d{10}$/
+
+        var name = document.getElementById("name")
+        var email = document.getElementById("email")
+        var phone = document.getElementById("phone")
+        var validate = true
+        if(nameRegix.test(name.value)== false){
+            document.querySelector(".name_error").style.display="inline"
+            validate = false
+        }
+        else{
+            document.querySelector(".name_error").style.display="none"
+           
+        }
+        
+        if(emailRegix.test(email.value)== false){
+            document.querySelector(".email_error").style.display="inline"
+            validate = false
+        }
+        else{
+            document.querySelector(".email_error").style.display="none"
+
+        }
+        if(phoneRegix.test(phone.value)== false){
+            document.querySelector(".phone_error").style.display="inline"
+            validate = false
+        }
+        else{
+            document.querySelector(".phone_error").style.display="none"
+
+        }
+        if(validate == true){
+            alert("form validate Succesfully")
+        }
+
+    })
+</script>
+
+<!-- search options -->
+
+<input type="text" id="search">
+
+
+<div class="container">
+    <h1>one</h1>
+<h1>two</h1>
+<h1>three</h1>
+<h1>four</h1>
+<h1>five</h1>
+<h1>six</h1>
+<h1>seven</h1>
+<h1>eight</h1>
+<h1>nine</h1>
+<h1>ten</h1>
+
+</div>
+<script>
+    var search =document.getElementById("search")
+    var container = document.querySelector(".container")
+    var hlist = container.querySelectorAll("h1")
+
+    search.addEventListener("keyup",function(){
+        var enteredValue = event.target.value.toUpperCase()
+
+        for(count=0;count<hlist.length; count=count+1){
+            if(hlist[count].textContent.toUpperCase().indexOf(enteredValue)<0){
+                hlist[count].style.display="none"
+            }
+            else{
+                hlist[count].style.display="block"
+
+            }
+        }
+
+    })
+
+</script>

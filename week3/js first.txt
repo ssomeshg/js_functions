@@ -1,0 +1,24 @@
+var a = "EMC" == "emc"? "true":"False"
+console.log(a)
+
+var raining = true;
+var result = raining? "Take an Umbrella" : "Sun Day"
+console.log(result)
+
+
+var name = "john";
+var age = 20;
+var favColor = "black";
+var isRaining = false;
+console.log(`my name is ${name} and my age is ${age} favorite color is ${favColor} and ${isRaining? "yes" : "no"}`)
+
+
+var width = 5;
+var heigth = 8;
+var area = (width*heigth);
+console.log(area)
+
+
+var isSunny = true;
+var weatherMessage = isSunny ? "Its a sunny day !":"Its not sunny today"
+console.log(weatherMessage)

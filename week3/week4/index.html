@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>js practice</title>
+
+</head>
+
+<body>
+    <h1 id="title">Hello World</h1>
+
+
+    <!-- excersice 1 -->
+
+    <div class="container">
+        <p class="para1">First para</p>
+        <p class="para2">second para</p>
+        <p class="para3">third para</p>
+
+        <ul>
+            <li>item 1</li>
+            <li>item 2</li>
+            <li>item 3</li>
+        </ul>
+    </div>
+
+    <!-- add and remove attribute  -->
+    <style>
+        .bg {
+            background-color: aquamarine;
+        }
+
+        .bold {
+            font-weight: bold;
+        }
+    </style>
+    <p id="p1" style="background-color: aquamarine;
+    ">hello</p>
+    <script>
+        var para = document.querySelector('#p1')
+        para.setAttribute("class", "bg")
+        para.removeAttribute("class", "bold")
+    </script>
+
+
+    <!-- style manipulation -->
+
+    <h1 class="heading">Hello</h1>
+    <script>
+        var headContent = document.querySelector(".heading")
+        headContent.style.color = "red"
+        headContent.style.backgroundColor = "black"
+    </script>
+
+
+    <!-- event  -->
+
+    <button id="button">click</button>
+
+    <!-- event object find -->
+
+    <!-- <body onkeypress="clickKey(event)">
+    
+</body> -->
+
+    <button onclick="btnClick(event)">button 1</button>
+    <button onclick="btnClick(event)">button 2</button>
+    <button onclick="btnClick(event)">button 3</button>
+
+    <script>
+
+        function btnClick(event) {
+            alert(event.target.textContent)
+        }
+        function clickKey(event) {
+            console.log(event.code)
+        }
+    </script>
+
+    <script>
+
+        var btn = document.getElementById('button')
+        btn.setAttribute("onclick", "colorChanger()")
+
+
+
+        function colorChanger() {
+            var b = document.querySelector('body')
+            b.style.backgroundColor = "red"
+        }
+
+
+    </script>
+
+
+    <!-- add two number using input box -->
+
+    <input type="text" name="" id="num1">
+    <br>
+    <input type="text" id="num2">
+    <br>
+    <button onclick="addFun()">add</button>
+    <h1 id="res">Resullt is : </h1>
+
+    <script>
+
+
+
+        function addFun() {
+
+            var val1 = Number(document.getElementById('num1').value);
+            var val2 = Number(document.getElementById('num2').value);
+            var resEle = document.getElementById('res');
+
+            var result = val1 + val2;
+            resEle.textContent = "Resullt is :" + result
+
+        }
+
+
+    </script>
+
+
+    <!-- input ex1 -->
+
+    <input type="text" name="" id="inbox" onkeyup="clickEle()">
+    <h1 id="in_result"></h1>
+
+    <script>
+        var inBox = document.querySelector('#inbox')
+        var resBox = document.querySelector('#in_result')
+        function clickEle() {
+
+
+
+            resBox.textContent = inBox.value
+
+
+        }
+
+    </script>
+
+
+    <h1>Random Guess number</h1>
+
+    <input id="inum" type="text" placeholder="enter yhe guess number">
+    <button id="btn_c" onclick="checkBtn()">check</button>
+
+    <p id="result_r">your guess is right / wrong</p>
+
+    <p id="guesscount">your guess number is 3</p>
+
+
+
+    <!-- color box -->
+    <style>
+        .red {
+            background-color: red;
+            width: 100px;
+            height: 100px;
+        }
+
+        .black {
+            background-color: black;
+            width: 100px;
+            height: 100px;
+        }
+    </style>
+    <div class="red">
+
+    </div>
+    <button id="btn1">Add black</button>
+    <button id="btn2">remove black</button>
+
+    <script>
+        var box = document.querySelector('.red')
+        var btn1 = document.getElementById('btn1')
+
+        btn1.addEventListener("click", function () {
+            box.classList.add('black')
+        });
+        btn2.addEventListener("click", function () {
+            box.classList.remove('black')
+        })
+    </script>
+
+<br> <br>
+
+    <!-- popup box -->
+ <h5>>======= popup_box ====></h5>
+    <style>
+.popup_box{
+    height: 100%;
+    width: 50%;
+    margin: auto;
+    background-color: rgb(122, 122, 122);
+    padding: 20px;
+    border-radius: 10px;
+    
+    
+}
+.popup_box button{
+    text-align: right;
+    cursor: pointer;
+    
+}
+.hidden{
+    display: none;
+}
+    </style>
+    
+    <button id="onPopup">button Click</button>
+    <div class="popup_box hidden">
+        <button id="close">X</button>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus obcaecati voluptate excepturi! Odit illo
+            ducimus nostrum nesciunt eligendi nisi dolorum, natus officia nihil ex accusamus modi, magnam doloremque rem
+            pariatur.
+        </p>
+    </div>
+    <script>
+        var pop = document.querySelector('.popup_box')
+        var popUp = document.getElementById('onPopup')
+        var popclose = document.getElementById('close')
+
+        // popUp.addEventListener("click", function(){
+        //     pop.style.display = "block"
+        // })
+        // popClose.addEventListener("click", function(){
+        //     pop.style.display = "none"
+        // })
+
+        // another method
+        popUp.addEventListener('click',function(){
+            pop.classList.remove('hidden')
+        })
+        popclose.addEventListener('click',function(){
+            pop.classList.add('hidden')
+        });
+    </script>
+
+
+
+    <script src="./dom.js"></script>
+</body>
+
+</html>

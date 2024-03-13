@@ -1,0 +1,67 @@
+<button id="add">Add Element</button>
+
+<div id="container">
+
+</div>
+
+<script>
+    var btn = document.getElementById("add")
+    var container = document.getElementById("container")
+    btn.addEventListener("click", function () {
+        var para = document.createElement("p")
+        para.textContent = "lorem ipisum"
+        para.style.color = "purple"
+        para.style.fontSize = "25px"
+        console.log(para)
+
+
+        container.append(para)   //add element in last of an container
+        // PREPEND add element in first of an container
+    })
+
+</script>
+
+<h1 id="one">One</h1>
+<h1 id="two">Two</h1>
+
+<button id="btn">Delete</button>
+
+<script>
+    var head = document.getElementById("two")
+    var btnDel = document.getElementById("btn")
+
+    btnDel.addEventListener("click", function () {
+        head.remove()
+    })
+
+</script>
+
+<br>
+<!-- todo list -->
+<p>________________</p>
+<h1>TODO LIST</h1>
+<input type="text" id="inBox">
+<button class="addBtn">Add</button>
+
+<ul id="list_element">
+    <li>Hello
+        <button onclick="deleteElement(event)">Delete</button>
+    </li>
+</ul>
+
+<script>
+    var inputBox = document.getElementById("inBox")
+    var btn = document.querySelector(".addBtn")
+    var listElement = document.getElementById("list_element")
+
+    btn.addEventListener("click", function () {
+        var list = document.createElement("li")
+        list.innerHTML = inputBox.value + "<button onclick='deleteElement(event)''>Delete</button>"
+      
+        listElement.append(list)
+    })
+    function deleteElement(event) {
+        
+        event.target.parentElement.remove()
+    }
+</script>
